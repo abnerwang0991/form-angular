@@ -31,7 +31,7 @@
 	  </tr>
 	  <tr ng-repeat="user in users">
 	    <td>
-	      <button class="btn btn-info" ng-click="editUser(user.id)">&#9998; 編輯</button>
+	      <button class="btn btn-info" ng-click="editUser(user.name, $index)">&#9998; 編輯</button>
 	    </td>
 	    <td>{{ user.lName }}</td>
 	    <td>{{ user.fName }}</td>
@@ -59,7 +59,7 @@
 	      <label>再輸入一次密碼:</label>
 	      <input class="form-control" type="password" ng-model="passw2" placeholder="再輸入一次密碼">
 	    </div>
-		<button class="btn btn-info" ng-disabled="error || incomplete">&#10004; 儲存</button>
+		<button class="btn btn-info" ng-click="add()" ng-disabled="error || incomplete">&#10004; 儲存</button>
 	</form>
 	</div>
 
