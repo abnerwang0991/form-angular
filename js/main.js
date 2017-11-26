@@ -30,16 +30,20 @@ angular.module('myApp', []).controller('userCtrl', function($scope) {
   };
 
   $scope.add = function() {
-   	  $scope.users.forEach(function(e, i) {
-        if(e.lName == $scope.lName && e.fName == $scope.fName) {
-          $scope.users.splice(i, 1);
-        }
-      });
-   	  $scope.users.push({
-      	lName: $scope.lName,
-        fName: $scope.fName
-      });
-    };
+  	var users = $scope.users.map(function(e) {
+  		var wholeName = [e.lName, e.fName].join("");
+  		return wholeName;
+  	});
+  	console.log(users);
+  	var user = [$scope.lName, $scope.fName].join("");
+  	console.log(user);
+  	if(users.indexOf(user) == -1) {
+  		$scope.users.push({
+  			lName: $scope.lName,
+  			fName: $scope.fName
+  		});
+  	}
+  };
 
   $scope.$watch('passw1',function() {$scope.test();});
   $scope.$watch('passw2',function() {$scope.test();});
